@@ -2,7 +2,8 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { Inter } from '@next/font/google'
 import { FaSearch, FaYandexInternational,FaPlus } from 'react-icons/fa';
-import { IoMdArrowRoundBack } from 'react-icons/Io';
+import { IoMdArrowRoundBack } from "../node_modules/react-icons/Io"
+// import { IoMdArrowRoundBack } from 'react-icons/Io';
 import Search from './Search';
 import React, { useEffect, useState } from "react";
 
