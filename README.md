@@ -1,9 +1,9 @@
 ### Search In
 
-####about the site
+#### about the site
  A website that allows registered users to add websites with a search engine that use the GET protocol.
 
-###the development process
+### the development process
 -I developed this site after graduation due to my own need, the frontend of the site was developed in React, in addition I used the following libraries:
 NEXT.JS and fortawesome.
 FrontEnd runs on netlify.
@@ -16,9 +16,9 @@ The backend of the site was written in Node.js and allows the self-adjustment of
 And in addition I used serverless function netlify.
 As the Database I used MongoDB.
 
-###Next steps
+### Next steps
 - adapt to mobile.
 - Give users more customizations.
 
-###Check for yourself
+### Check for yourself
 - [Search In site link](https://searchin.netlify.app "Search In site link")
