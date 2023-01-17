@@ -15,25 +15,42 @@ export default class SignUp extends Component {
     e.preventDefault();
     const { fname, lname, email, password } = this.state;
     console.log(fname, lname, email, password);
-    fetch("http://localhost:5000/register", {
-      method: "POST",
-      crossDomain: true,
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-        "Access-Control-Allow-Origin": "*",
-      },
-      body: JSON.stringify({
-        fname,
-        email,
-        lname,
-        password,
-      }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data, "userRegister");
-      });
+  (async () => {
+    let results = await fetch("https://63c69e4d7bc13e30efe4278c--searchinbackend.netlify.app/.netlify/functions/register"
+    , {
+method: "POST",
+
+body: JSON.stringify({
+fname,
+email,
+lname,
+password,
+}),
+}).then((response) => {
+// *** Check for HTTP failure
+console.log(response)
+if (!response.ok) {
+console.log("fdssdf")
+throw new Error("HTTP status " + response.status);
+}
+// *** Read and parse the JSON          
+console.log("111")
+
+return response.json();
+})
+.then((res) => {
+// *** Use the object
+alert(res.status);
+})
+.catch((error) => {          console.log("1s11")
+
+/* ...*** handle/report error, since this code doesn't return the promise chain...*/
+});}
+)();
+
+
+
+
   }
   render() {
     return (

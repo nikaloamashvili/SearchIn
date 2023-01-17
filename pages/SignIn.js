@@ -15,31 +15,54 @@ export default class SignIn extends Component {
     e.preventDefault();
     const { email, password ,agreement} = this.state;
     console.log(email, password);
-    fetch("http://localhost:5000/login-user", {
-      method: "POST",
-      crossDomain: true,
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-        "Access-Control-Allow-Origin": "*",
-      },
-      body: JSON.stringify({
+      (async () => {
+        let results = await fetch("https://63c69e4d7bc13e30efe4278c--searchinbackend.netlify.app/.netlify/functions/login-user"
+        , {
+    method: "POST",
+    body: JSON.stringify({
         email,
         password,
-      }),
+    }),
+    }).then((response) => {
+    // *** Check for HTTP failure
+    console.log(response)
+    if (!response.ok) {
+      console.log(response.status)
+      if(response.status=="401" ||response.status=="500" ){
+        alert("wrong password or username");
+      }
+    throw new Error("HTTP status " + response.status);
+    }
+    // *** Read and parse the JSON          
+    
+    return response.json();
     })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data, "userRegister");
-        if (data.status == "ok") {
-          alert("login successful");
-          window.localStorage.setItem("token", data.data);
-          window.localStorage.setItem("loggedIn", true);
-          window.localStorage.setItem("stay", agreement);
+    .then((response) => {
+    // *** Use the object
 
-          window.location.href = "./";
-        }
-      });
+      alert("login successful");
+      console.log(email);
+      window.localStorage.setItem("token", response.data);
+      window.localStorage.setItem("email",email)
+      window.localStorage.setItem("loggedIn", true);
+      window.localStorage.setItem("stay", agreement);
+      window.location.href = "./";
+    
+
+
+    })
+    .catch((error) => {   
+
+    
+    /* ...*** handle/report error, since this code doesn't return the promise chain...*/
+    });}
+    )();
+
+
+
+
+
+
   }
   render() {
     return (

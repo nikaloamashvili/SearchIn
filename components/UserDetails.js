@@ -8,26 +8,33 @@ export default class UserDetails extends Component {
     };
   }
   componentDidMount() {
-    fetch("http://localhost:5000/userData", {
-      method: "POST",
-      crossDomain: true,
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-        "Access-Control-Allow-Origin": "*",
-      },
+      fetch("https://63c69e4d7bc13e30efe4278c--searchinbackend.netlify.app/.netlify/functions/userData", {
+    method: "POST",
       body: JSON.stringify({
         token: window.localStorage.getItem("token"),
       }),
     })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data, "userData");
-        this.setState({ userData: data.data });
-        window.localStorage.setItem("email",this.state.userData.email)
+    .then((response) => {
+      // *** Check for HTTP failure
+      console.log(response)
+      if (!response.ok) {
+      throw new Error("HTTP status " + response.status);
+      }
+      // *** Read and parse the JSON                
+      return response.json();
+      })
+      .then((res) => {
+      // *** Use the object
+      this.setState({ userData: res.data });
+
+      })
+      .catch((error) => {          
+        console.log("error")
       });
   }
+
   render() {
+    
     return (
       
         <span className="userdata">hello {this.state.userData.fname} {this.state.userData.lname}</span>

@@ -15,27 +15,33 @@ export default function App()  {
 
   if (typeof window !== "undefined") {
     useEffect(() => {setIsLoggedIn(localStorage.getItem("loggedIn"))
-    if(isLoggedIn){
-      fetch("http://localhost:5000/userData", {
-        method: "POST",
-        crossDomain: true,
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-          "Access-Control-Allow-Origin": "*",
-        },
-        body: JSON.stringify({
-          token: window.localStorage.getItem("token"),
-        }),
-      })
-        .then((res) => res.json())
-        .then((data) => {
-
-          setUserData( data.data );
-        }).catch(console.log("eror"));
-    }
-  
-  
+    // if(isLoggedIn){
+    //   console.log("true its logg");
+    //   fetch("http://localhost:8888/.netlify/functions/userData", {
+    //     method: "POST",
+    //     body: JSON.stringify({
+    //       token: window.localStorage.getItem("token"),
+    //     }),
+    //   })
+    //   .then((response) => {
+    //     // *** Check for HTTP failure
+    //     console.log(response)
+    //     if (!response.ok) {
+    //     throw new Error("HTTP status " + response.status);
+    //     }
+    //     // *** Read and parse the JSON                
+    //     return response.json();
+    //     })
+    //     .then((res) => {
+    //     // *** Use the object
+    //     // this.setState({ userData: res.data });
+    //     setIsLoggedIn(true)
+    //     setUserData(res.data)
+    //     })
+    //     .catch((error) => {          
+    //       console.log("error")
+    //     });
+    // }
   }, [])
 
 

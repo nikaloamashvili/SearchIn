@@ -13,12 +13,10 @@ export default function Navbar(props) {
     localStorage.clear();
     location.href = "./";
   }
-  // const isLoggedIn = window.localStorage.getItem("loggedIn");
 
   return (
     <div className='navbar'>
         <Image className="navbar-image" src={applogo} width={400} height={200}/>
-        {/* <h1>Navbar</h1> */}
         {
           props.isLoggedIn?
         <>

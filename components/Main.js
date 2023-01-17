@@ -1,16 +1,20 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import { Inter } from '@next/font/google'
-import { FaSearch, FaYandexInternational,FaPlus } from 'react-icons/fa';
-import { IoMdArrowRoundBack } from "../node_modules/react-icons/Io"
-// import { IoMdArrowRoundBack } from 'react-icons/Io';
 import Search from './Search';
 import React, { useEffect, useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+    faUndo,
+    faPlus,
+    faSearch
+  } from "@fortawesome/free-solid-svg-icons";
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Main(props) {
 
+  const myBE="https://63c69e4d7bc13e30efe4278c--searchinbackend.netlify.app"
   const [add, setAdd] = React.useState(false);
   const [searchs, setSearchs] = React.useState([])
   let searchElements;
@@ -69,7 +73,6 @@ export default function Main(props) {
     setSearchs([]);
   if(props.isLoggedIn){
     getaDB();
-    // setSearchs(x=>{return [...x,{name:"Google",url:"https://www.google.com/search?q=",conector6:" "}]});
   }else{
 
     setSearchs(x=>{return [...x,{name:"Google",url:"https://www.google.com/search?q=",conector6:" "}]});
@@ -88,49 +91,62 @@ export default function Main(props) {
   }
 
   function getaDB(){
-    fetch("http://localhost:5000/getSearch", {
+    fetch(myBE+"/.netlify/functions/getSearch", {
       method: "POST",
-      crossDomain: true,
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-        "Access-Control-Allow-Origin": "*",
-      },
       body: JSON.stringify({
         token: window.localStorage.getItem("token"),
       }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if(data.data.length==0){
-          setDB(window.localStorage.getItem("email"),"Google","https://www.google.com/search?q="," ");
-          setDB(window.localStorage.getItem("email"),"Youtube","https://www.youtube.com/results?search_query=","+");
-          setDB(window.localStorage.getItem("email"),"Translate","https://translate.google.co.il/?sl=iw&tl=en&text="," ");
+    }).then((response) => {
+      // *** Check for HTTP failure
+      console.log(response)
+      if (!response.ok) {
+      throw new Error("HTTP status " + response.status);
+      }
+      // *** Read and parse the JSON                
+      return response.json();
+      })
+      .then((res) => {
+      // *** Use the object\
 
-        }else{
-          setSearchs(data.data)
+      console.log("sdaasmedas")
+      if( res.data.length==0){
+        setDB(window.localStorage.getItem("email"),"Google","https://www.google.com/search?q="," ");
+        setDB(window.localStorage.getItem("email"),"Youtube","https://www.youtube.com/results?search_query=","+");
+        setDB(window.localStorage.getItem("email"),"Translate","https://translate.google.co.il/?sl=iw&tl=en&text="," ");
 
-        }
-        // this.setState({ userData: data.data });
+      }else{
+        setSearchs( JSON.parse(res.data))
+
+      }
+      })
+      .catch((error) => {          
+        console.log("error")
       });
   }
 
   function delDB(name){
-    fetch("http://localhost:5000/deleteSearch", {
+    // fetch("http://localhost:5000/deleteSearch", {
+      fetch(myBE+"/.netlify/functions/deleteSearch", {
+
       method: "POST",
-      crossDomain: true,
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-        "Access-Control-Allow-Origin": "*",
-      },
       body: JSON.stringify({
         name      }),
     })
-      .then((res) => res.json())
-      .then((data) => {
-        // setSearchs(data.data)
-        // this.setState({ userData: data.data });
+    .then((response) => {
+      // *** Check for HTTP failure
+      console.log(response)
+      if (!response.ok) {
+      throw new Error("HTTP status " + response.status);
+      }
+      // *** Read and parse the JSON                
+      return response.json();
+      })
+      .then((res) => {
+        alert("the search engine removed!")
+      // *** Use the object\
+          })
+      .catch((error) => {          
+        console.log("error")
       });
   }
 
@@ -148,27 +164,38 @@ export default function Main(props) {
 }
 
   function setDB(email,name,url,conector){
-    // e.preventDefault();
-    // const { fname, lname, email, password } = this.state;
-    fetch("http://localhost:5000/addSearch", {
+      console.log(email);
+      console.log("top")
+      fetch(myBE+"/.netlify/functions/addSearch", {
       method: "POST",
-      crossDomain: true,
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-        "Access-Control-Allow-Origin": "*",
-      },
       body: JSON.stringify({
         email,
         name,
         url,
         conector,
       }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data, "search added!");
+    }).then((response) => {
+      // *** Check for HTTP failure
+      console.log(response)
+      if (!response.ok) {
+      throw new Error("HTTP status " + response.status);
+      }
+      // *** Read and parse the JSON                
+      return response.json();
+      })
+      .then((res) => {
+      // *** Use the object\
+
+      alert("The engine was added!");
+
+      })
+      .catch((error) => {          
+        console.log("error")
       });
+
+
+
+
   }
 
   function addSherch(){
@@ -211,14 +238,14 @@ export default function Main(props) {
     <div className='main'>
         {/* <h1>Main</h1> */}
         <div className="search-box">
-            <button className="btn-search" onClick={logic} > <FaSearch/> </button>
+            <button className="btn-search" onClick={logic} > <FontAwesomeIcon icon={faSearch} size="2x" color= "#00aced"  width={20} height={20}/></button>
             <input type="text" className="input-search" placeholder="Type to Search..." onChange={handleSearchStringChange} onKeyPress={onKeyUp}></input>
         </div>
         <div className="choose">
       <form className="choose1" onChange={onChangeValue} >
         {!(searchElements==undefined)?searchElements:<h1>error</h1>}
         <div className="add">
-    <buttom onClick={addSherch}><FaPlus/></buttom>
+    <buttom onClick={addSherch}><FontAwesomeIcon icon={faPlus} size="2x" color= "#00aced"  width={20} height={20}/></buttom>
     </div>
       </form>
     </div>
@@ -250,11 +277,11 @@ export default function Main(props) {
      <div className="addButtons">
 
     <div className="add2" onClick={adds} title="Add a shearch engine">
-    <button ><FaPlus/></button>
+    <FontAwesomeIcon icon={faPlus} size="2x" color= "#00aced"  width={30} height={70}/>
     </div>
 
     <div className="exit" onClick={exit} title="Go back">
-    <button ><IoMdArrowRoundBack/></button>
+    <FontAwesomeIcon icon={faUndo} size="2x" color= "#00aced"  width={30} height={70}/>
     </div>
     </div>
 

@@ -9,7 +9,7 @@ if (typeof window !== "undefined") {
   window.addEventListener("beforeunload", (ev) => 
 {  
   if(window.localStorage.getItem("stay")){
-
+     
   }else{
     localStorage.clear();
   }
