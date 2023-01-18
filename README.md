@@ -1,20 +1,18 @@
 ### Search In
 
 #### about the site
- A website that allows registered users to add websites with a search engine that use the GET protocol.
+ A website that allows registered users to add websites with a search engine that use the GET protocol,
+ And then search inside all ther websites  from one search bar.
 
 ### the development process
--I developed this site after graduation due to my own need, the frontend of the site was developed in React, in addition I used the following libraries:
+- I developed this site after graduation due to my own need, the FrontEnd of the site was developed in React, in addition I used the following libraries:
 NEXT.JS and fortawesome.
 FrontEnd runs on netlify.
 
-The backend of the site was written in Node.js and allows the self-adjustment of each user, in addition I used the following libraries:
--   "bcryptjs": "^2.4.3",
--    "dotenv": "^16.0.3",
--   "jsonwebtoken": "^9.0.0",
--  "mongodb": "^4.13.0".
-And in addition I used serverless function netlify.
-As the Database I used MongoDB.
+- The backEnd of the site was written in Node.js and allows the self-adjustment of each user, in addition I used the following libraries:
+bcryptjs ,dotenv , jsonwebtoken , mongodb And in addition I used serverless function netlify.
+
+- As the Database I used MongoDB.
 
 ### Next steps
 - adapt to mobile.
