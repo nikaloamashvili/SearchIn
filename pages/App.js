@@ -49,7 +49,6 @@ export default function App()  {
 
     }
 
-
   return (
     <div>
         <Navbar isLoggedIn={isLoggedIn}/>

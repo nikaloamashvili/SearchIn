@@ -6,19 +6,12 @@ import App from './App.js'
 
 const inter = Inter({ subsets: ['latin'] })
 if (typeof window !== "undefined") {
-  window.addEventListener("beforeunload", (ev) => 
-{  
-  if(window.localStorage.getItem("stay")){
-     
-  }else{
-    localStorage.clear();
+  if(window.localStorage.getItem("stay")!="on"){
+  window.onunload = () => {
+        localStorage.clear()
+    }
   }
-
-    // ev.preventDefault();
-    // return ev.returnValue = 'Are you sure you want to close?';
-});
-  // Client-side-only code
-}
+  };
 
 
 export default function Home() {
