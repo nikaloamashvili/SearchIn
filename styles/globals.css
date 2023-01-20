@@ -23,6 +23,34 @@ body{
     margin-right: 10px;
 } */
 
+
+.navbar-help {
+  background-color: #c2fbd7;
+  border-radius: 100px;
+  box-shadow: rgba(44, 187, 99, .2) 0 -25px 18px -14px inset,rgba(44, 187, 99, .15) 0 1px 2px,rgba(44, 187, 99, .15) 0 2px 4px,rgba(44, 187, 99, .15) 0 4px 8px,rgba(44, 187, 99, .15) 0 8px 16px,rgba(44, 187, 99, .15) 0 16px 32px;
+  color: green;
+  cursor: pointer;
+  margin-right: 10px;
+  display: inline-block;
+  font-family: CerebriSans-Regular,-apple-system,system-ui,Roboto,sans-serif;
+  padding: 7px 20px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 250ms;
+  border: 0;
+  font-size: 16px;
+  user-select: none;
+  -webkit-user-select: none;
+  height:65px;
+  touch-action: manipulation;
+  width: 65px;
+}
+
+.navbar-help:hover {
+  box-shadow: rgba(44,187,99,.35) 0 -25px 18px -14px inset,rgba(44,187,99,.25) 0 1px 2px,rgba(44,187,99,.25) 0 2px 4px,rgba(44,187,99,.25) 0 4px 8px,rgba(44,187,99,.25) 0 8px 16px,rgba(44,187,99,.25) 0 16px 32px;
+  transform: scale(1.05) rotate(-1deg);
+}
+
 .navbar-signin {
   background-color: #c2fbd7;
   border-radius: 100px;
@@ -222,12 +250,14 @@ body{
     transition: background-color 300ms;
   }
   .signin  button:hover {
-    background-color: #f24353;
+    background-color: #876064;
   }
 
   .form-control{
     margin-bottom: 15px;
   }
+  
+
 
   .addButtons{
     display: flex;

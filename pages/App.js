@@ -7,6 +7,7 @@ import Main from '../components/Main.js'
 import Footer from '../components/Footer'
 import React, { useEffect, useState } from "react";
 
+
 const inter = Inter({ subsets: ['latin'] })
 
 export default function App()  {
@@ -50,7 +51,7 @@ export default function App()  {
     }
 
   return (
-    <div>
+    <div className='app'>
         <Navbar isLoggedIn={isLoggedIn}/>
         <Main isLoggedIn={isLoggedIn}/>
         <Footer/>

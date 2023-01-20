@@ -10,6 +10,7 @@ import {
     faSearch
   } from "@fortawesome/free-solid-svg-icons";
 
+
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Main(props) {
