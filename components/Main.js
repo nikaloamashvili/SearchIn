@@ -10,8 +10,7 @@ import {
     faPlus,
     faSearch
   } from "@fortawesome/free-solid-svg-icons";
-  import Popup from 'reactjs-popup';
-  import 'reactjs-popup/dist/index.css';
+
 
 const inter = Inter({ subsets: ['latin'] })
 
