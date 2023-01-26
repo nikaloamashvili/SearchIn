@@ -1,8 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap');
 
-body{
-    font-family: "Roboto Condensed", sans-serif;
 
+body {
+  height: 100%;
+  margin:0px;
+  overflow-x: hidden;
+  font-family: "Roboto Condensed", sans-serif;
 }
 
 .navbar{
@@ -17,6 +20,13 @@ body{
     -webkit-user-select: none;
     -ms-user-select: none;
 }
+
+/* @media screen and (max-width: 550px) {
+  .navbar-image{
+     width: 100px;
+     height: 100px; 
+  }
+} */
 
 
 /* .navbar-signin{
@@ -78,12 +88,18 @@ body{
   transform: scale(1.05) rotate(-1deg);
 }
 .link-s{
-  text-decoration: none;
-  display: block;
-  margin-top: 15px;
-  margin-left: auto;
-  margin-right: auto;
+  color: inherit; /* blue colors for links too */
+  text-decoration: inherit; /* no underline */
 ;}
+
+.link-r{
+  padding: 70px 0;
+  text-align: center;
+  padding-top: 10px;
+  color: inherit; /* blue colors for links too */
+  text-decoration: inherit; /* no underline */
+;}
+
 
 .link-f{
   margin-left: 6px;
@@ -92,13 +108,19 @@ body{
 }
 
 .main{
-    padding-top: 50px;
+  /* z-index: -1; */
+
+    padding-top: 70px;
     text-align: center;
 }
 
 .choose1{
     justify-content: center;
     display: flex;
+}
+
+.nav-link{
+  border-radius: 30px;
 }
 
 
@@ -121,6 +143,7 @@ body{
     height: 50px;
     width: 100px;
     touch-action: manipulation;
+    margin-right: 10px;
   }
   
   .btn-nav:hover {
@@ -276,6 +299,20 @@ body{
     margin-right: 30px;
   
   }
+
+  .help-t{
+    font-size: 20px;
+    color: #00aced;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+  }
+  .help-b{
+    padding-top: 10px;
+    padding-top: 0px;
+    margin-top: 0px;
+    margin-left: 10px;
+    border-radius: 30px;
+  }
   
   .r1c1{
     margin-right: 114px;
@@ -338,3 +375,160 @@ body{
 
 
 
+.navigation {
+  position: sticky;
+  z-index: 3;
+  top: 0;
+  display: flex;
+  align-items: center;
+  height: 60px;
+  width: 100%;
+  padding: 0.5rem 0rem;
+  /* padding-bottom: 10px; */
+  background-color: var(--primary-white);
+  color: var(--primary-dark);
+  box-shadow: 0 2px 2px 2px rgba(9, 9, 9, 0.23);
+}
+
+.brand-name {
+  text-decoration: none;
+  color: var(--primary-dark);
+  font-size: 1.3rem;
+  margin-left: 1rem;
+}
+
+.navigation-menu {
+  margin-left: auto;
+}
+
+.navigation-menu ul {
+  display: flex;
+  padding: 0;
+}
+
+.navigation-menu li {
+  list-style-type: none;
+  margin: 0 1rem;
+}
+
+.navigation-menu li a {
+  text-decoration: none;
+  display: block;
+  width: 100%;
+}
+
+.hamburger {
+  border: 0;
+  height: 40px;
+  width: 40px;
+  padding: 0.5rem;
+  border-radius: 50%;
+  background-color: #283b8b;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+  position: absolute;
+  top: 50%;
+  right: 25px;
+  transform: translateY(-50%);
+  display: none;
+}
+
+.hamburger:hover {
+  background-color: #2642af;
+}
+
+@media screen and (max-width: 550px) {
+  .hamburger {
+    display: block;
+  }
+
+
+
+  .navigation-menu ul {
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 60px);
+    background-color: white;
+    border-top: 1px solid black;
+    display: none;
+  }
+
+  .navigation-menu li {
+    text-align: center;
+    margin: 0;
+  }
+
+  /* .navigation-menu li a {
+    color: black;
+    width: 100%;
+    padding: 1.5rem 0;
+  } */
+
+
+  .navigation-menu li:hover {
+    background-color: #eee;
+  }
+
+  .navigation-menu.expanded ul {
+    display: block;
+  }
+  .nav-link{
+    border:none;
+
+  }
+}
+
+body.active-modal {
+  overflow-y: hidden;
+}
+
+.btn-modal {
+  padding: 10px 20px;
+  display: block;
+  margin: 100px auto 0;
+  font-size: 18px;
+}
+
+.modal, .overlay {
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+  z-index: 4;
+}
+
+.overlay  {
+  background: rgba(49,49,49,0.8);
+  z-index: 4;
+}
+
+
+
+
+.modal-content {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  line-height: 1.4;
+  background: #f1f1f1;
+  padding: 14px 28px;
+  border-radius: 3px;
+  max-width: 600px;
+  min-width: 300px;
+  z-index: 10;
+
+}
+
+.close-modal {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 5px 7px;
+}

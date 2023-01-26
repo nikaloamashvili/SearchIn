@@ -6,7 +6,9 @@ import Navbar from '../components/Navbar.js'
 import Main from '../components/Main.js'
 import Footer from '../components/Footer'
 import React, { useEffect, useState } from "react";
-
+import BasicModal from '../components/BasicModal'
+// import Button from 'react-bootstrap/Button';
+// import Modal from 'react-bootstrap/Modal';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -49,9 +51,40 @@ export default function App()  {
 
 
     }
+    // const [show, setShow] = useState(true);
+    // const handleClose = () => setShow(false);
+    // const handleShow = () => setShow(true);
+  
+    // const ModalH=    
+    // (<>
+  
+  
+    //     <Modal
+    //       show={show}
+    //       onHide={handleClose}
+    //       backdrop="static"
+    //       keyboard={false}
+    //     >
+    //       <Modal.Header closeButton>
+    //         <Modal.Title>Modal title</Modal.Title>
+    //       </Modal.Header>
+    //       <Modal.Body>
+    //       Introducing "search in", the ultimate one-stop-shop for all your online searching needs. Say goodbye to endlessly hopping from site to site, trying to find what you're looking for. With "search in", you can add your favorite search engines to our platform and search them all with just one simple click of a button. Upgrade your searching game and give "search in" a try today!
+    //       </Modal.Body>
+    //       <Modal.Footer>
+    //         <Button variant="secondary" onClick={handleClose}>
+    //           Close
+    //         </Button>
+    //         <Button variant="primary">Understood</Button>
+    //       </Modal.Footer>
+    //     </Modal>
+    //   </>)
 
   return (
+    
     <div className='app'>
+      {/* {ModalH} */}
+      {!isLoggedIn && <BasicModal props={isLoggedIn}/>}
         <Navbar isLoggedIn={isLoggedIn}/>
         <Main isLoggedIn={isLoggedIn}/>
         <Footer/>

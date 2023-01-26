@@ -2,6 +2,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { Inter } from '@next/font/google'
 import Search from './Search';
+
 import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -9,7 +10,8 @@ import {
     faPlus,
     faSearch
   } from "@fortawesome/free-solid-svg-icons";
-
+  import Popup from 'reactjs-popup';
+  import 'reactjs-popup/dist/index.css';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -23,6 +25,7 @@ export default function Main(props) {
   let searchChoice= "";
   let name="";
   let searchUrl="";
+ 
 
 
   function handleSearchStringChange(event) {
@@ -236,6 +239,7 @@ export default function Main(props) {
 
   return (
     (!add)?
+   
     <div className='main'>
         {/* <h1>Main</h1> */}
         <div className="search-box">
@@ -246,13 +250,15 @@ export default function Main(props) {
       <form className="choose1" onChange={onChangeValue} >
         {!(searchElements==undefined)?searchElements:<h1>error</h1>}
         <div className="add">
-    <buttom onClick={addSherch}><FontAwesomeIcon icon={faPlus} size="2x" color= "#00aced"  width={20} height={20}/></buttom>
+    <button1 onClick={addSherch}><FontAwesomeIcon icon={faPlus} size="2x" color= "#00aced"  width={20} height={20}/></button1>
+    {/* {!props.isLoggedIn?
+        <button className='help-b' onClick={handleShow}><span className='help-t'>?</span></button> 
+:<></>} */}
     </div>
       </form>
     </div>
     </div>    
     :
-
     <div className="addPage">
     <h1>Add a shearch engine:</h1>
     <div className="aName">
@@ -285,7 +291,6 @@ export default function Main(props) {
     <FontAwesomeIcon icon={faUndo} size="2x" color= "#00aced"  width={30} height={70}/>
     </div>
     </div>
-
     </div>
   )
 }
