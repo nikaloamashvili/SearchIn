@@ -508,9 +508,6 @@ body.active-modal {
   z-index: 4;
 }
 
-
-
-
 .modal-content {
   position: absolute;
   top: 40%;
