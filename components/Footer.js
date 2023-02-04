@@ -28,7 +28,7 @@ export default function Footer() {
         className="icon-f1">
         <FontAwesomeIcon icon={faLinkedin} size="2x" color="black"  width={30} height={70}   />
         </a>
-        <FontAwesomeIcon icon={faImage} size="2x" color= "#00aced"  width={30} height={70}/>
+        {/* <FontAwesomeIcon icon={faImage} size="2x" color= "#00aced"  width={30} height={70} className="addbimage"/> */}
         </div>
         
   </div>

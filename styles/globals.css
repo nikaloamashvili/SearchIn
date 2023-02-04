@@ -175,9 +175,14 @@ body {
 .icon-f1{
   margin-right: auto;
 }
+.addbimage{
+  position:absolute;
+  right: 10px;
+}
 
 .tfooter{
     position:absolute;
+    width: 100%;
     bottom: 0;
 }
 
@@ -444,6 +449,14 @@ body {
 @media screen and (max-width: 550px) {
   .hamburger {
     display: block;
+  }
+  .navigation{
+    height: 100px;
+    
+  }
+  
+  .main{
+    padding-top: 70%;
   }
 
 
