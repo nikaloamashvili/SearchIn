@@ -13,13 +13,12 @@ export default class ForgotPass extends Component {
     e.preventDefault();
     const { email } = this.state;
   (async () => {
-    let results = await fetch("https://63c69e4d7bc13e30efe4278c--searchinbackend.netlify.app/.netlify/functions/ForgotPass"
+    let results = await fetch("https://searchinbackend.netlify.app/.netlify/functions/ForgotPass"
     , {
 method: "POST",
-
-body: JSON.stringify({
-email,
-}),
+      body: JSON.stringify({
+      email
+      }),
 }).then((response) => {
 // *** Check for HTTP failure
 console.log(response)

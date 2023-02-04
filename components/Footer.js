@@ -3,14 +3,12 @@ import Image from 'next/image'
 import { Inter } from '@next/font/google'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-    faYoutube,
-    faFacebook,
-    faTwitter,
-    faInstagram,
     faGithub,
     faLinkedin
   } from "@fortawesome/free-brands-svg-icons";
-
+  import {
+    faImage,
+  } from "@fortawesome/free-solid-svg-icons";
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Footer() {
@@ -27,9 +25,10 @@ export default function Footer() {
         <FontAwesomeIcon icon={faGithub} size="2x" color="black"  width={30} height={70}   />
         </a>
         <a href="https://www.linkedin.com/in/nika-lomashvili-software-developer/"
-        className="icon-f">
+        className="icon-f1">
         <FontAwesomeIcon icon={faLinkedin} size="2x" color="black"  width={30} height={70}   />
         </a>
+        <FontAwesomeIcon icon={faImage} size="2x" color= "#00aced"  width={30} height={70}/>
         </div>
         
   </div>

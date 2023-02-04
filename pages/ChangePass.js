@@ -19,7 +19,7 @@ export default class ChangePass extends Component {
         alert("The new password not the same!")
     }else{
       (async () => {
-        let results = await fetch("https://63c69e4d7bc13e30efe4278c--searchinbackend.netlify.app/.netlify/functions/changePassword"
+        let results = await fetch("https://searchinbackend.netlify.app/.netlify/functions/changePassword"
         , {
     method: "POST",
     body: JSON.stringify({
