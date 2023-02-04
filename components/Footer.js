@@ -14,6 +14,9 @@ const inter = Inter({ subsets: ['latin'] })
 export default function Footer() {
   return (
     <div className="tfooter">
+      {/* <div className="ad-class">
+     <GoogleAds slot="2434444" />
+</div> */}
     <p className="koko">
 		Created with React by 
 		<a target="_blank" className='link-f' href="https://www.linkedin.com/in/nika-lomashvili-software-developer/">Nika Lomashvili</a>
