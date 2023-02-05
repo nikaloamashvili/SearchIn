@@ -1,41 +1,3 @@
-
-
-// export default function Navbar(props) {
-
-
-
-//   return (
-//     <div className='navbar'>
-//         <Image className="navbar-image" src={applogo} />
-//         {
-//           props.isLoggedIn?
-
-//         <>
-//         <UserDetails/>
-//         <button  className="btn-nav" onClick={changePass}>
-//           Change Password
-//         </button>
-//         <button  className="btn-nav" onClick={logOut}>
-//           Sign Out
-//         </button>
-//         </>
-
-//         :
-
-//         <>
-//         <Popup trigger={<button className='navbar-signin'><span className='link-s'>?</span></button>} position="right top">
-//             <div>Introducing "search in", the ultimate one-stop-shop for all your online searching needs. Say goodbye to endlessly hopping from site to site, trying to find what you're looking for. With "search in", you can add your favorite search engines to our platform and search them all with just one simple click of a button. Upgrade your searching game and give "search in" a try today!</div>
-//         </Popup>
-//         <button className='navbar-signin'><a href='/SignIn' className='link-s'> Sign In</a></button>
-//         <button className='navbar-signin'><a href='/SignUp' className='link-s'> Sign Up</a></button>
-//         </>
-
-//         }
-//     </div>
-//   )
-// }
-
-
 import Head from 'next/head'
 import Image from 'next/image'
 import { Inter } from '@next/font/google'
@@ -56,7 +18,6 @@ export default function Navbar(props) {
   }
   const [isNavExpanded, setIsNavExpanded] = useState(false);
 
-  console.log(isNavExpanded);
   return (
     <nav className="navigation">
       {/* <a href="/" className="brand-name">
@@ -95,11 +56,11 @@ export default function Navbar(props) {
 
           <li className="nav-li"><UserDetails/></li>
          <li className="nav-li">
-              <button onClick={changePass} className="nav-link" >Change Password</button>
+              <button onClick={changePass} className="button-17" >Change Password</button>
           </li>
 
           <li className="nav-li">
-              <button onClick={logOut} className="nav-link" > Sign Out</button>
+              <button onClick={logOut} className="button-17" > Sign Out</button>
           </li>
          </ul>
 
@@ -107,11 +68,11 @@ export default function Navbar(props) {
 
          <ul>
          <li className="nav-li">
-              <button className="nav-link"><a className='link-s'  href="/SignIn">Sign In</a></button>
+              <button className="button-17"><a className='link-s'  href="/SignIn">Sign In</a></button>
           </li>
 
           <li className="nav-li">
-             <button className="nav-link"><a className='link-s'  href="/SignUp">Sign Up</a></button>
+             <button className="button-17" > <a className='link-s'  href="/SignUp">Sign Up</a></button>
           </li>
 
 

@@ -14,18 +14,46 @@ const inter = Inter({ subsets: ['latin'] })
 
 export default function App()  {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [userData,setUserData]=useState({});
+  const [theme,setTheme]=useState(false);
+
+
+  const [bgImage, setBgImage] = useState('default_bg.jpg');
+
+  const handleChangeBg = (newImage) => {
+    setBgImage(newImage);
+  }
 
   if (typeof window !== "undefined") {
     useEffect(() => {setIsLoggedIn(localStorage.getItem("loggedIn"))
   }, [])
     }
+
+    function showTheme(){
+      setTheme(x=>{return !x})
+    }
+  
   return (
-    <div className='app'>
+<div style={{
+  height: '100vh',
+  backgroundImage: `url(${bgImage})`,
+  backgroundSize: 'cover',
+  backgroundPosition: 'center'
+}}>
+
+      {theme && <select onChange={(e) => handleChangeBg(e.target.value)}>
+      <option value="default_bg.jpg">White theme</option>
+      <option value="image1.jpg">Purple theme</option>
+      <option value="image2.jpg">Blue theme</option>
+      <option value="yi.png">Yellow theme</option>
+      <option value="pi.png">Pink theme</option>
+
+      </select>}
+
       {!isLoggedIn && <BasicModal props={isLoggedIn}/>}
+
         <Navbar isLoggedIn={isLoggedIn}/>
         <Main isLoggedIn={isLoggedIn}/>
-        <Footer/>
+        <Footer fun={showTheme}/>
     </div>
   )
 }

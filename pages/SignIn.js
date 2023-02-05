@@ -7,15 +7,14 @@ export default class SignIn extends Component {
     this.state = {
       email: "",
       password: "",
-      agreement:""
+      // agreement:""
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    const { email, password ,agreement} = this.state;
-    console.log(email, password);
+    const { email, password } = this.state;
       (async () => {
         let results = await fetch("https://63c69e4d7bc13e30efe4278c--searchinbackend.netlify.app/.netlify/functions/login-user"
         , {
@@ -42,11 +41,10 @@ export default class SignIn extends Component {
     // *** Use the object
 
       alert("login successful");
-      console.log(email);
       window.localStorage.setItem("token", response.data);
       window.localStorage.setItem("email",email)
       window.localStorage.setItem("loggedIn", true);
-      window.localStorage.setItem("stay", agreement);
+      // window.localStorage.setItem("stay", agreement);
       window.location.href = "./";
     
 
@@ -91,7 +89,7 @@ export default class SignIn extends Component {
           />
         </div>
 
-        <div className="mb-3">
+        {/* <div className="mb-3">
           <div className="custom-control custom-checkbox">
             <input
               type="checkbox"
@@ -103,7 +101,7 @@ export default class SignIn extends Component {
               Remember me
             </label>
           </div>
-        </div>
+        </div> */}
 
         <div className="d-grid">
           <button type="submit" className="btn btn-primary">

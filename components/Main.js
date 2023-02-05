@@ -111,7 +111,8 @@ export default function Main(props) {
       .then((res) => {
       // *** Use the object\
 
-      console.log("sdaasmedas")
+      console.log(res.data)
+      console.log("look at the sky")
       if( res.data.length==0){
         setDB(window.localStorage.getItem("email"),"Google","https://www.google.com/search?q="," ");
         setDB(window.localStorage.getItem("email"),"Youtube","https://www.youtube.com/results?search_query=","+");
@@ -261,7 +262,7 @@ export default function Main(props) {
     <div className="addPage">
     <h1>Add a shearch engine:</h1>
     <div className="aName">
-    <span className="r1c1">Shearch engine name</span>
+    <label  className="">Shearch engine name</label >
     <input 
                     type="text"
                     placeholder="Shearch engine name"
@@ -269,9 +270,7 @@ export default function Main(props) {
                     name="name"
                     onChange={handleAddName}
                 />
-    </div>
-    <div className="aUrl">
-    <span  className="r1c2" title="Search for 'hello world' in the search engine you want to add and then paste the url you get here">Shearch engine "Hello World" Url</span>
+    <label   className="" title="Search for 'hello world' in the search engine you want to add and then paste the url you get here">Shearch engine "Hello World" Url</label >
                 <input 
                     type="text"
                     placeholder="Url"

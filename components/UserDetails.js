@@ -37,7 +37,7 @@ export default class UserDetails extends Component {
     
     return (
       
-        <span className="nav-link">hello {this.state.userData.fname} {this.state.userData.lname}</span>
+        <h2 className="nav-text">hello {this.state.userData.fname} {this.state.userData.lname}</h2>
       
     );
   }

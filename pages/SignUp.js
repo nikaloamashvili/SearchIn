@@ -15,7 +15,6 @@ export default class SignUp extends Component {
   handleSubmit(e) {
     e.preventDefault();
     const { fname, lname, email, password } = this.state;
-    console.log(fname, lname, email, password);
   (async () => {
     let results = await fetch("https://63c69e4d7bc13e30efe4278c--searchinbackend.netlify.app/.netlify/functions/register"
     , {
@@ -31,11 +30,9 @@ password,
 // *** Check for HTTP failure
 console.log(response)
 if (!response.ok) {
-console.log("fdssdf")
 throw new Error("HTTP status " + response.status);
 }
 // *** Read and parse the JSON          
-console.log("111")
 
 return response.json();
 })
@@ -43,7 +40,7 @@ return response.json();
 // *** Use the object
 alert(res.status);
 })
-.catch((error) => {          console.log("1s11")
+.catch((error) => {         
 
 /* ...*** handle/report error, since this code doesn't return the promise chain...*/
 });}

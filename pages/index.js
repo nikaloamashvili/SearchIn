@@ -5,13 +5,13 @@ import styles from '../styles/Home.module.css'
 import App from './App.js'
 
 const inter = Inter({ subsets: ['latin'] })
-if (typeof window !== "undefined") {
-  if(window.localStorage.getItem("stay")!="on"){
-  window.onunload = () => {
-        localStorage.clear()
-    }
-  }
-  };
+// if (typeof window !== "undefined") {
+//   if(window.localStorage.getItem("stay")!="on"){
+//   window.onunload = () => {
+//         localStorage.clear()
+//     }
+//   }
+//   };
 
 
 export default function Home() {
