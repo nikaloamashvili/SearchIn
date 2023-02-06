@@ -12,9 +12,28 @@ export default class SignUp extends Component {
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+
+
+CheckPassword(inputtxt) 
+{ 
+var passw = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
+if(inputtxt.match(passw)) 
+{ 
+return true;
+}
+else
+{ 
+alert('The password must be between 6 to 20 characters which contain at least one numeric digit, one uppercase and one lowercase letter!')
+return false;
+}
+}
+
   handleSubmit(e) {
     e.preventDefault();
     const { fname, lname, email, password } = this.state;
+    if(this.CheckPassword(password)){
+
+  
   (async () => {
     let results = await fetch("https://63c69e4d7bc13e30efe4278c--searchinbackend.netlify.app/.netlify/functions/register"
     , {
@@ -39,12 +58,16 @@ return response.json();
 .then((res) => {
 // *** Use the object
 alert(res.status);
+location.href = "./SignIn";
+
 })
 .catch((error) => {         
 
 /* ...*** handle/report error, since this code doesn't return the promise chain...*/
 });}
-)();
+)()  }else{
+  
+};
 
 
 

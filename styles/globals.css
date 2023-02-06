@@ -187,6 +187,12 @@ body {
   bottom: 5px;
 }
 
+.addbimage :hover{
+   width:40px ;
+   height: 40px;
+   color:rgba(15, 15, 152, 0.84);
+}
+
 .tfooter{
     position:absolute;
     width: 100%;
@@ -507,6 +513,14 @@ background: none;
   background-color: #2642af;
 }
 
+@media only screen and (hover: none) and (pointer: coarse){
+
+  .main{
+    padding-top: 60%;
+  }
+  
+  }
+
 @media screen and (max-width: 550px) {
   .hamburger {
     display: block;
@@ -515,15 +529,17 @@ background: none;
     height: 100px;
     
   }
+
+
   
-  .main{
+  /* .main{
     padding-top: 60%;
-  }
+  } */
 
   .navigation-menu ul {
     flex-direction: column;
     position: absolute;
-    top: 60px;
+    top: 80px;
     left: 0;
     width: 100%;
     height: calc(100vh - 60px);
@@ -535,10 +551,11 @@ background: none;
   .navigation-menu li {
     text-align: center;
     margin: 0;
+  
   }
 
   .navigation-menu li:hover {
-    background-color: #eee;
+    /* background-color: #black; */
   }
 
   .navigation-menu.expanded ul {

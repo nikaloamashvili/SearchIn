@@ -24,9 +24,12 @@ export default function Main(props) {
   let searchChoice= "";
   let name="";
   let searchUrl="";
+
+  const google={name:"Google",url:"https://www.google.com/search?q=",conector6:" ",suffix:"&sxsrf=AJOqlzVhOb5mtZwvjm0PpFwQHrSfZqfVbQ%3A1675673568659&source=hp&ei=4L_gY-X5JYHJkwXV1ZWwBg&iflsig=AK50M_UAAAAAY-DN8DWG3je0FoVOrBD7Pd4cvtKOGmvk&ved=0ahUKEwjl6cS-woD9AhWB5KQKHdVqBWYQ4dUDCAg&uact=5&oq=dfsdf&gs_lcp=Cgdnd3Mtd2l6EAMyCAgAEIAEEMsBMggIABCABBDLATIICAAQgAQQywEyCAgAEIAEEMsBMggIABCABBDLATIICAAQgAQQywEyCAgAEIAEEMsBMggIABCABBDLATIICAAQgAQQywEyCggAEIAEEAoQywE6BwgjEOoCECc6BAgjECc6CwgAEIAEELEDEIMBOgUIABCABDoICAAQgAQQsQM6EQguEIAEELEDEIMBEMcBENEDOgQIABBDOgUILhCABDoHCCMQJxCdAjoHCAAQgAQQClCbAliYBWDtCWgBcAB4AYABkQOIAdQHkgEHMC40LjQtMZgBAKABAbABCg&sclient=gws-wiz"}
+  const translate={name:"Translate",url:"https://translate.google.co.il/?sl=iw&tl=en&text=",conector6:" ",suffix:"&op=translate"}
+  const youtube={name:"Youtube",url:"https://www.youtube.com/results?search_query=",conector6:"+",suffix:""}
+
  
-
-
   function handleSearchStringChange(event) {
     searchString=(event.target.value);
   }
@@ -61,6 +64,7 @@ export default function Main(props) {
     for (let i = 0; i < words.length; i++) {
       let result = "";
       result = bstr.concat("+", words[i]);
+      result = result.concat(searchs[k].suffix)
       bstr = result;
     }
     window.open(bstr, '_blank');
@@ -78,9 +82,10 @@ export default function Main(props) {
     getaDB();
   }else{
 
-    setSearchs(x=>{return [...x,{name:"Google",url:"https://www.google.com/search?q=",conector6:" "}]});
-    setSearchs(x=>{return [...x,{name:"Youtube",url:"https://www.youtube.com/results?search_query=",conector6:"+"}]});
-    setSearchs(x=>{return[...x,{name:"Translate",url:"https://translate.google.co.il/?sl=iw&tl=en&text=",conector6:" "}]});
+    setSearchs(x=>{return [...x,google]});
+    setSearchs(x=>{return [...x,youtube]});
+    setSearchs(x=>{return[...x,translate]});
+    
   }}, [props.isLoggedIn])
 
 
@@ -113,11 +118,13 @@ export default function Main(props) {
 
       console.log(res.data)
       console.log("look at the sky")
-      if( res.data.length==0){
-        setDB(window.localStorage.getItem("email"),"Google","https://www.google.com/search?q="," ");
-        setDB(window.localStorage.getItem("email"),"Youtube","https://www.youtube.com/results?search_query=","+");
-        setDB(window.localStorage.getItem("email"),"Translate","https://translate.google.co.il/?sl=iw&tl=en&text="," ");
-
+      if( JSON.parse(res.data)==0){
+        setDB(window.localStorage.getItem("email"),"Google","https://www.google.com/search?q="," ","&sxsrf=AJOqlzVhOb5mtZwvjm0PpFwQHrSfZqfVbQ%3A1675673568659&source=hp&ei=4L_gY-X5JYHJkwXV1ZWwBg&iflsig=AK50M_UAAAAAY-DN8DWG3je0FoVOrBD7Pd4cvtKOGmvk&ved=0ahUKEwjl6cS-woD9AhWB5KQKHdVqBWYQ4dUDCAg&uact=5&oq=dfsdf&gs_lcp=Cgdnd3Mtd2l6EAMyCAgAEIAEEMsBMggIABCABBDLATIICAAQgAQQywEyCAgAEIAEEMsBMggIABCABBDLATIICAAQgAQQywEyCAgAEIAEEMsBMggIABCABBDLATIICAAQgAQQywEyCggAEIAEEAoQywE6BwgjEOoCECc6BAgjECc6CwgAEIAEELEDEIMBOgUIABCABDoICAAQgAQQsQM6EQguEIAEELEDEIMBEMcBENEDOgQIABBDOgUILhCABDoHCCMQJxCdAjoHCAAQgAQQClCbAliYBWDtCWgBcAB4AYABkQOIAdQHkgEHMC40LjQtMZgBAKABAbABCg&sclient=gws-wiz");
+        setDB(window.localStorage.getItem("email"),"Youtube","https://www.youtube.com/results?search_query=","+","");
+        setDB(window.localStorage.getItem("email"),"Translate","https://translate.google.co.il/?sl=iw&tl=en&text="," ","&op=translate");
+        setSearchs(x=>{return [...x,google]});
+        setSearchs(x=>{return [...x,youtube]});
+        setSearchs(x=>{return[...x,translate]});
       }else{
         setSearchs( JSON.parse(res.data))
 
@@ -129,7 +136,6 @@ export default function Main(props) {
   }
 
   function delDB(name){
-    // fetch("http://localhost:5000/deleteSearch", {
       fetch(myBE+"/.netlify/functions/deleteSearch", {
 
       method: "POST",
@@ -167,7 +173,7 @@ export default function Main(props) {
       return rArray});
 }
 
-  function setDB(email,name,url,conector){
+  function setDB(email,name,url,conector,suffix){
       console.log(email);
       console.log("top")
       fetch(myBE+"/.netlify/functions/addSearch", {
@@ -176,7 +182,8 @@ export default function Main(props) {
         email,
         name,
         url,
-        conector,
+        conector
+        ,suffix
       }),
     }).then((response) => {
       // *** Check for HTTP failure
@@ -223,14 +230,13 @@ export default function Main(props) {
     let url= searchUrl.slice(0, positionh);
     let positionw = searchUrl.search("world");
     let conector=searchUrl.slice(positionh+5, positionw);
-
+    let suffix=searchUrl.slice(positionw+5);
     if(positionh==-1){
      alert("we don't support this Sherch engine")
     }else{
-      setDB(window.localStorage.getItem("email"),name,url,conector);
+      setDB(window.localStorage.getItem("email"),name,url,conector,suffix);
      setSearchs(x=>{
-      //  localStorage.setItem("key",JSON.stringify([...x,{name:name,url:url,conector6:conector}]))
-       return [...x,{name:name,url:url,conector6:conector}]});
+       return [...x,{name:name,url:url,conector6:conector,suffix:suffix}]});
      setAdd(false);
     }
  }
