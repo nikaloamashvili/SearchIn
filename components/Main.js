@@ -64,9 +64,10 @@ export default function Main(props) {
     for (let i = 0; i < words.length; i++) {
       let result = "";
       result = bstr.concat("+", words[i]);
-      result = result.concat(searchs[k].suffix)
       bstr = result;
     }
+    bstr = bstr.concat(searchs[k].suffix)
+    console.log(bstr)
     window.open(bstr, '_blank');
   }else{
           window.open(searchs[k].url + searchString, '_blank');
@@ -81,11 +82,9 @@ export default function Main(props) {
   if(props.isLoggedIn){
     getaDB();
   }else{
-
     setSearchs(x=>{return [...x,google]});
     setSearchs(x=>{return [...x,youtube]});
     setSearchs(x=>{return[...x,translate]});
-    
   }}, [props.isLoggedIn])
 
 
@@ -176,8 +175,10 @@ export default function Main(props) {
   function setDB(email,name,url,conector,suffix){
       console.log(email);
       console.log("top")
+      
       fetch(myBE+"/.netlify/functions/addSearch", {
       method: "POST",
+      
       body: JSON.stringify({
         email,
         name,

@@ -36,7 +36,6 @@ export default class UserDetails extends Component {
   render() {
     
     return (
-      
         <h2 className="nav-text">Hello {this.state.userData.fname}</h2>
       
     );

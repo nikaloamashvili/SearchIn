@@ -30,6 +30,7 @@ export default class SignIn extends Component {
       console.log(response.status)
       if(response.status=="401" ||response.status=="500" ){
         alert("wrong password or username");
+        
       }
     throw new Error("HTTP status " + response.status);
     }
