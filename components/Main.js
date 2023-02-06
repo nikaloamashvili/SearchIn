@@ -67,10 +67,9 @@ export default function Main(props) {
       bstr = result;
     }
     bstr = bstr.concat(searchs[k].suffix)
-    console.log(bstr)
     window.open(bstr, '_blank');
   }else{
-          window.open(searchs[k].url + searchString, '_blank');
+          window.open(searchs[k].url + searchString +searchs[k].suffix, '_blank');
   }
         }
       }
