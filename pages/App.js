@@ -19,17 +19,23 @@ export default function App()  {
 
   const [bgImage, setBgImage] = useState('default_bg.jpg');
 
+
+
   const handleChangeBg = (newImage) => {
     setBgImage(newImage);
+    setBgImage(localStorage.setItem("img",newImage));
+
   }
 
   if (typeof window !== "undefined") {
     useEffect(() => {setIsLoggedIn(localStorage.getItem("loggedIn"))
+    setBgImage(localStorage.getItem("img"));
   }, [])
     }
 
     function showTheme(){
       setTheme(x=>{return !x})
+      
     }
   
   return (
