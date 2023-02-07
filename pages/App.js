@@ -23,7 +23,7 @@ export default function App()  {
 
   const handleChangeBg = (newImage) => {
     setBgImage(newImage);
-    setBgImage(localStorage.setItem("img",newImage));
+    localStorage.setItem("img",newImage);
 
   }
 
