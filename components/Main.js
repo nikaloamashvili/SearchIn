@@ -2,6 +2,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { Inter } from '@next/font/google'
 import Search from './Search';
+import CopyIcon from "./CopyIconWithLabel"
 
 import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -36,6 +37,23 @@ export default function Main(props) {
 
   function onChangeValue(event) {
     searchChoice=(event.target.value);
+  }
+
+  function getStringAfterFirstDot(url) {
+    // Find the index of the first dot in the URL
+    const dotIndex = url.indexOf('.');
+  
+    // Find the index of the first slash after the first dot
+    const slashIndex = url.indexOf('/', dotIndex);
+  
+    // If there is no slash after the first dot, use the end of the string as the end index
+    const endIndex = slashIndex !== -1 ? slashIndex : url.length;
+  
+    // Extract the substring between the first dot and the first slash (or the end of the string)
+    const substring = url.substring(dotIndex + 1, endIndex);
+  
+    // Return the substring
+    return substring;
   }
 
   function handleAddName(event) {
@@ -113,7 +131,6 @@ export default function Main(props) {
       })
       .then((res) => {
       // *** Use the object\
-
       console.log(res.data)
       console.log("look at the sky")
       if( JSON.parse(res.data)==0){
@@ -132,6 +149,10 @@ export default function Main(props) {
         console.log("error")
       });
   }
+  // console.log("color!");
+
+  // console.log(props.buttonColor);
+
 
   function delDB(name){
       fetch(myBE+"/.netlify/functions/deleteSearch", {
@@ -223,14 +244,16 @@ export default function Main(props) {
    }
 
    function adds(){
-    if(searchUrl=="" || name==""){
+    if(searchUrl==""){
      alert("not vaild data")
     }else{
-    let positionh = searchUrl.search("hello");
+    let  name=getStringAfterFirstDot(searchUrl)   
+    let positionh = searchUrl.search("Hello");
     let url= searchUrl.slice(0, positionh);
-    let positionw = searchUrl.search("world");
+    let positionw = searchUrl.search("World");
     let conector=searchUrl.slice(positionh+5, positionw);
     let suffix=searchUrl.slice(positionw+5);
+
     if(positionh==-1){
      alert("we don't support this Sherch engine")
     }else{
@@ -268,15 +291,15 @@ export default function Main(props) {
     <div className="addPage">
     <h1>Add a shearch engine:</h1>
     <div className="aName">
-    <label  className="">Shearch engine name</label >
+    {/* <label  className="">Shearch engine name</label >
     <input 
                     type="text"
                     placeholder="Shearch engine name"
                     className="form--input"
                     name="name"
                     onChange={handleAddName}
-                />
-    <label   className="" title="Search for 'hello world' in the search engine you want to add and then paste the url you get here">Shearch engine "Hello World" Url</label >
+                /> */}
+    <label   className="" title="Click on the copy text button after that paste the text and Search it in the search engine you want to add and then paste the url you get here ">Shearch engine "Hello World" Url</label >
                 <input 
                     type="text"
                     placeholder="Url"
@@ -294,6 +317,11 @@ export default function Main(props) {
     <div className="exit" onClick={exit} title="Go back">
     <FontAwesomeIcon icon={faUndo} size="2x" color= "#00aced"  width={30} height={70}/>
     </div>
+
+    <CopyIcon/>
+
+
+
     </div>
     </div>
   )

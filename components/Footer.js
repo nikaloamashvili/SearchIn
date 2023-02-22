@@ -32,7 +32,7 @@ export default function Footer(props) {
         className="icon-f1">
         <FontAwesomeIcon icon={faLinkedin} size="2x" color="black"  width={20} height={15}   />
         </a>
-        <FontAwesomeIcon icon={faImage} size="2x" color= "#00aced"  width={30} height={30} className="addbimage" title="Change theme" onClick={()=>props.fun()}/>
+        <FontAwesomeIcon icon={faImage} size="2x" color= "#00aced"  width={30} height={30} className="addbimage" title={props.bText==null?("Use Default Image"):props.bText ?("Use Custom Image"):("Hide Image Selector")} onClick={()=>props.fun()}/>
         </div>
     
         

@@ -37,6 +37,7 @@ export default function BasicModal(props) {
             you can add your favorite search engines to our platform and search them all with just one simple click of a button.
             Upgrade your searching game and give "search in" a try today!
             </p>
+            <img src="https://s3.gifyu.com/images/_Search_In_-_Google_Chrome__2023-02-22_19-21-10_AdobeExpress.gif" alt="GIF" />
             <button className="close-modal" onClick={toggleModal}>
               CLOSE
             </button>
@@ -46,3 +47,5 @@ export default function BasicModal(props) {
     </>
   );
 }
+
+
