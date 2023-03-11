@@ -253,6 +253,7 @@ export default function Main(props) {
     let positionw = searchUrl.search("World");
     let conector=searchUrl.slice(positionh+5, positionw);
     let suffix=searchUrl.slice(positionw+5);
+    suffix=suffix?suffix:"";
 
     if(positionh==-1){
      alert("we don't support this Sherch engine")
