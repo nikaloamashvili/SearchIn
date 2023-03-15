@@ -17,8 +17,8 @@ export default function Navbar(props) {
     location.href = "./SignIn";
   }
 
-  function SignOut(){
-    location.href = "./SignOut";
+  function SignUp(){
+    location.href = "./SignUp";
   }
 
   function changePass(){
