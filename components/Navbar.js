@@ -13,6 +13,14 @@ export default function Navbar(props) {
     location.href = "./";
   }
 
+  function SignIn(){
+    location.href = "./SignIn";
+  }
+
+  function SignOut(){
+    location.href = "./SignOut";
+  }
+
   function changePass(){
     location.href = "./ChangePass";
   }
@@ -68,11 +76,11 @@ export default function Navbar(props) {
 
          <ul>
          <li className="nav-li">
-              <button className="button-17"><a className='link-s'  href="/SignIn">Sign In</a></button>
+              <button className="button-17" onClick={SignIn}><a className='link-s'  href="/SignIn">Sign In</a></button>
           </li>
 
           <li className="nav-li">
-             <button className="button-17" > <a className='link-s'  href="/SignUp">Sign Up</a></button>
+             <button className="button-17" onClick={SignUp}> <a className='link-s'  href="/SignUp">Sign Up</a></button>
           </li>
 
 
